@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import DarkMode from "./DarkMode";
 
+import { Link } from "react-router-dom";
 import { images } from "../../constants";
 
 const Navbar = () => {
@@ -38,12 +39,12 @@ const Navbar = () => {
       <DarkMode />
       {/* Signup and Login */}
       <div className="bg-white p-2 rounded-full mr-2 hover:bg-red-800 group hover:transition-all duration-700 ease-out hover:scale-105">
-        <a
-          className="text-red-500 text-sm font-bold group-hover:text-white "
-          href="#signup"
+        <Link
+          to="/Signup"
+          className="text-red-500 text-sm font-bold group-hover:text-white uppercase "
         >
-          SIGN UP
-        </a>
+          SignUp
+        </Link>
       </div>
 
       {/* Menu */}
