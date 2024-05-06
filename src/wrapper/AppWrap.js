@@ -1,19 +1,21 @@
 import React from "react";
-import { NavigationDots, SocialMedia } from "../components";
 
 const AppWrap = (Component, idName, classNames) =>
   function HOC() {
     return (
-      <div id={idName} className={`app__container ${classNames}`}>
-        <SocialMedia />
-        <div className="app__wrapper app__flex">
+      <div id={idName} className={`flex flex-row w-full `}>
+        <div className="flex-1 w-full flex-col p-6 flex justify-center items-center">
           <Component />
 
-          <div className="copyright">
-            <p className="p-text" style={{textTransform:"none", color:"gray"}}>@2024 SayeedTheDev</p>
+          <div className="w-full flex flex-col content-end">
+            <p
+              className=" uppercase text-black"
+              style={{ textTransform: "none", color: "gray" }}
+            >
+              @2024 SayeedTheDev
+            </p>
           </div>
         </div>
-        <NavigationDots active={idName} />
       </div>
     );
   };
