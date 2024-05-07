@@ -9,7 +9,7 @@ const DarkMode = () => {
 
   return (
     <>
-      <label className="themeSwitcherTwo relative inline-flex cursor-pointer select-none items-center mr-[5rem]">
+      <label className="themeSwitcherTwo relative flex  cursor-pointer select-none items-end ">
         <input
           type="checkbox"
           checked={isChecked}
