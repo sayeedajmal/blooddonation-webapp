@@ -2,45 +2,8 @@ import React, { useState } from "react";
 
 import { images } from "../../constants";
 
-const Signup = () => {
-  const URL = "http://localhost:8080/api/v1";
-  /* 
-  //For Signup Validation
-  const Signup = () => {
-    const [formData, setFormData] = useState({
-      firstName: "",
-      lastName: "",
-      dob: "",
-      bloodType: "",
-      contactNumber: "",
-      city: "",
-      lastDonationDate: "",
-      email: "",
-    });
-
-
-    const [errors, setErrors] = useState({});
-
-    const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormData({ ...formData, [name]: value });
-      setErrors({ ...errors, [name]: "" });
-    };
-
-    const handleSubmit = () => {
-      const newErrors = {};
-      Object.keys(formData).forEach((key) => {
-        if (!formData[key]) {
-          newErrors[key] = `${key} is required`;
-        }
-      });
-      if (Object.keys(newErrors).length > 0) {
-        setErrors(newErrors);
-      } else {
-        console.log("Form data:", formData);
-      }
-    };
-  }; */
+const Register = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -60,24 +23,57 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const responseData = document.getElementById("response");
+    const responseData = document.getElementById("response");
 
-      await fetch({ URL } + `/donor/createDonor`, {
+    var donorData = {
+      firstName: document.getElementById("firstName").value,
+      lastName: document.getElementById("lastName").value,
+      dob: document.getElementById("dob").value,
+      bloodType: document.getElementById("bloodType").value,
+      contactNumber: document.getElementById("contactNumber").value,
+      email: document.getElementById("email").value,
+      city: document.getElementById("city").value,
+      lastDonationDate: document.getElementById("lastDonationDate").value,
+    };
+
+    try {
+      console.log(apiUrl+ process.env.REACT_APP_API_URL);
+      await fetch(`${apiUrl}/donor/createDonor`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
-      })
-        .then((response) => response.json())
+        body: JSON.stringify(donorData),
+      }) // HERE'S CHECKS THE RESPONSE. IF AND GET THE TYPE OF
+        //CONTENT IF IT'S HAVE APPLICTION/JSON THEN JSON ORTHERWISE JUST RETURN THE TEXT
+        .then((response) => {
+          const contentType = response.headers.get("content-type");
+          if (contentType && contentType.includes("application/json")) {
+            return response.json();
+          } else {
+            return response.text();
+          }
+        })
         .then((data) => {
-          responseData.innerText = data;
+          /* Object Error */
+          if (typeof data === "object") {
+            responseData.style.color = "red";
+            if (data.status === 400) {
+              responseData.color = "red";
+              responseData.innerText = "Fill All Fields, Code:" + data.status;
+            } else responseData.innerText = data.message + ": " + data.status;
+          } else {
+            responseData.style.color = "green";
+            responseData.innerText = data;
+          }
         })
         .catch((error) => {
-          responseData.innerText = error.message;
+          responseData.style.color = "red";
+          responseData.innerText = `Error ${error.message}`;
         });
-    } catch (error) {}
+    } catch (error) {
+      responseData.innerText = error.message;
+    }
   };
 
   return (
@@ -86,25 +82,22 @@ const Signup = () => {
       className="flex items-center justify-center min-h-screen"
     >
       <div className="md:flex items-center shadow-lg  shadow-primary-color rounded-lg">
-        {/* Image and SignUp Text */}
+        {/* Image and Register Text */}
         <div className="flex flex-col items-center md:flex-shrink-0">
           <img
             className="h-12 w-12 object-cover md:w-48 md:h-48"
             src={images.logo}
-            alt="Signup"
+            alt="Register"
           />
-          <div className="uppercase tracking-wide text-sm text-primary-color  font-bold">
-            Sign Up
+          <div className="uppercase ml-3 tracking-wide text-xl text-primary-color  font-bold">
+            Register Blood Donation
           </div>
-          <h2 className="mt-2 text-2xl font-semibold text-gray-900">
-            Create an account
-          </h2>
-          <p className="m-2 text-center text-gray-600">
-            Fill in the form below to get started.
+          <p className="m-2 text-center font-bold uppercase text-green-500">
+            Wanna Save Life! Register.
           </p>
           <p
             id="response"
-            className="m-2 text-center text-green-500 flex flex-wrap"
+            className="m-2 text-center max-w-prose text-green-500 flex flex-wrap"
           />
           {/*  <Link
             to="/Login"
@@ -128,7 +121,6 @@ const Signup = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-color leading-tight focus:outline-none focus:shadow-outline"
               id="firstName"
               type="text"
-            //  value={formData.firstName}
               placeholder="firstName"
             />
           </div>
@@ -145,7 +137,6 @@ const Signup = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-color leading-tight focus:outline-none focus:shadow-outline"
               id="lastName"
               type="text"
-             // value={formData.lastName}
               placeholder="lastName"
             />
           </div>
@@ -162,7 +153,6 @@ const Signup = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-color leading-tight focus:outline-none focus:shadow-outline"
               id="dob"
               type="date"
-             // value={formData.dob}
               placeholder="dob"
             />
           </div>
@@ -178,17 +168,16 @@ const Signup = () => {
               className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="bloodType"
               name="bloodType"
-             // value={formData.bloodType}
             >
               <option value="">Select your blood type</option>
-              <option value="A+">A+</option>
-              <option value="A-">A-</option>
-              <option value="B+">B+</option>
-              <option value="B-">B-</option>
-              <option value="AB+">AB+</option>
-              <option value="AB-">AB-</option>
-              <option value="O+">O+</option>
-              <option value="O-">O-</option>
+              <option value="A_POSITIVE">A+</option>
+              <option value="A_NEGATIVE">A-</option>
+              <option value="B_POSITIVE">B+</option>
+              <option value="B_NIGATIVE">B-</option>
+              <option value="AB_POSITIVE">AB+</option>
+              <option value="AB_NEGATIVE">AB-</option>
+              <option value="O_POSITIVE">O+</option>
+              <option value="O_NEGATIVE">O-</option>
             </select>
           </div>
 
@@ -204,7 +193,6 @@ const Signup = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="contactNumber"
               type="tel"
-              //value={formData.contactNumber}
               placeholder="contactNumber"
             />
           </div>
@@ -221,7 +209,6 @@ const Signup = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="city"
               type="text"
-            //  value={formData.city}
               placeholder="city"
             />
           </div>
@@ -238,7 +225,6 @@ const Signup = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="lastDonationDate"
               type="date"
-              //value={formData.lastDonationDate}
               placeholder="lastDonationDate"
             />
           </div>
@@ -255,12 +241,11 @@ const Signup = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="email"
               type="email"
-            //  value={formData.email}
               placeholder="Email Address"
             />
           </div>
         </div>
-        {/* SignUp Button */}
+        {/* Register Button */}
         <div className="m-8 flex flex-col justify-center items-center">
           <button
             className="w-full bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
@@ -274,4 +259,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Register;
