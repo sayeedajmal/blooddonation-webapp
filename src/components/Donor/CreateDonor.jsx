@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-
+import React from "react";
+import { useState } from "react";
 import { images } from "../../constants";
 
-const Register = () => {
+const CreateDonor = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
 
   const [formData, setFormData] = useState({
@@ -38,7 +38,7 @@ const Register = () => {
 
     try {
       console.log(apiUrl+ process.env.REACT_APP_API_URL);
-      await fetch(`${apiUrl}/donor/createDonor`, {
+      await fetch(`${apiUrl}/donor/CreateDonor`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -251,7 +251,7 @@ const Register = () => {
             className="w-full bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
-            Sign Up
+           Register
           </button>
         </div>
       </div>
@@ -259,4 +259,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default CreateDonor;

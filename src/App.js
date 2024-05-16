@@ -1,7 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Navbar, Signup } from "./components";
-import { About, Footer, Header } from "./containers";
+import {
+  Navbar,
+  Donor,
+  MedicalHistory,
+  Staff,
+} from "./components";
+import { About, Footer, Header, Service } from "./containers";
 
 const App = () => {
   return (
@@ -10,6 +15,10 @@ const App = () => {
         <Routes>
           <Route path="/Signup" element={<SignupPage />} />
           <Route path="/" element={<HomePage />} />
+
+          <Route path="/Donor" element={<Donor />} />
+          <Route path="/MedicalHistory" element={<MedicalHistory />} />
+          <Route path="/Staff" element={<Staff />} />
         </Routes>
       </div>
     </Router>
@@ -19,8 +28,9 @@ const App = () => {
 const HomePage = () => {
   return (
     <div>
-      <Navbar />  
+      <Navbar />
       <Header />
+      <Service />
       <About />
       <Footer />
     </div>
@@ -28,11 +38,7 @@ const HomePage = () => {
 };
 
 const SignupPage = () => {
-  return (
-    <div className="signup-page">
-      <Signup />
-    </div>
-  );
+  return <div className="signup-page"></div>;
 };
 
 export default App;
