@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import CreateDonor from "../Donor/CreateDonor";
 import AppointDonor from "../Donor/AppointDonor";
+import DonorId from "../Donor/DonorId";
 
 const Donor = () => {
-  const donorHandler = ["CreateDonor", "AppointDonor"];
+  const donorHandler = ["CreateDonor", "AppointDonor", "DonorId"];
   const [activeComponent, setActiveComponent] = useState(null);
 
   const handleButtonClick = (component) => {
@@ -30,6 +31,7 @@ const Donor = () => {
       {/* Conditionally render components based on the button clicked */}
       {activeComponent === "CreateDonor" && <CreateDonor />}
       {activeComponent === "AppointDonor" && <AppointDonor />}
+      {activeComponent === "DonorId" && <DonorId />}
     </>
   );
 };

@@ -13,26 +13,12 @@
 :root {
 
   --font-base: "DM Sans", sans-serif;
-  /* Primary color for important elements */
   --primary-color: #ff0000; /* Deep Red */
-
-  /* Secondary color for accents and highlights */
   --secondary-color: #b30000; /* Bright Red */
-
-  /* Background color for the website */
   --background-color: #ffffff; /* White */
-
-  /* Light gray for secondary elements */
   --light-gray: #cccccc; /* Light Gray */
-
-  /* Dark gray for text and borders */
   --dark-gray: #333333; /* Dark Gray */
-
-  /* Accent color for special elements */
   --accent-color: #ffd700; /* Rich Gold */
-
-  /* Highlight color for call-to-action */
   --highlight-color: #ffa500; /* Warm Orange */
-
   --white-color: #ffffff;
 }

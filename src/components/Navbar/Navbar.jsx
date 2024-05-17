@@ -6,6 +6,7 @@ import { HiMenuAlt3, HiX } from "react-icons/hi";
 import DarkMode from "./DarkMode";
 
 import { Link } from "react-router-dom";
+
 import { images } from "../../constants";
 
 const Navbar = () => {

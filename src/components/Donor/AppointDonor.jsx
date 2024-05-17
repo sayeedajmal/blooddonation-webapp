@@ -13,7 +13,6 @@ const AppointDonor = () => {
         const responseData = await response.json();
 
         if (response.ok) {
-          console.log("Appointments:", responseData);
           setFieldNames(Object.keys(responseData[0]));
           setAppointments(responseData);
         } else {
@@ -29,7 +28,7 @@ const AppointDonor = () => {
   }, []);
 
   return (
-    <div className="container mx-auto mt-4 bg-gray-800 text-white p-4 rounded-md">
+    <div className="container mx-auto m-4 bg-gray-800 text-white p-4 rounded-lg">
       <table className="table-auto w-full">
         <thead id="Header">
           <tr>
@@ -42,7 +41,7 @@ const AppointDonor = () => {
         </thead>
         <tbody id="DataBody">
           {appointments.map((dataObject, index) => (
-            <tr key={index} className="hover:bg-gray-700">
+            <tr key={index} className="hover:bg-gray-700 hover:delay-75 ">
               {fieldNames.map((fieldName) => (
                 <td
                   key={fieldName}
