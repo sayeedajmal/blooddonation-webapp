@@ -1,0 +1,35 @@
+import React from "react";
+
+const ShowList = ({ fieldNames, data }) => {
+  return (
+    <div className="container mx-auto m-4 bg-gray-800 text-white p-4 rounded-lg">
+      <table className="table-auto w-full">
+        <thead id="Header">
+          <tr>
+            {fieldNames.map((fieldName, index) => (
+              <th key={index} className="px-4 py-2 border-b border-gray-700">
+                {fieldName}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody id="DataBody">
+          {data.map((dataObject, index) => (
+            <tr key={index} className="hover:bg-gray-700 hover:delay-75 text-center">
+              {fieldNames.map((fieldName) => (
+                <td
+                  key={fieldName}
+                  className="px-4 py-2 border-b border-gray-700"
+                >
+                  {dataObject[fieldName]}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default ShowList;
