@@ -30,8 +30,8 @@ This project is a web application for managing blood donation processes, includi
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/sayeedajmal/blooddonayion-webapp.git
-    cd blood-donation-website
+    git clone https://github.com/sayeedajmal/blooddonation-webapp.git
+    cd blooddonation-webapp
     ```
 
 2. Install dependencies:
