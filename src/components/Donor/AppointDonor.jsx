@@ -4,13 +4,13 @@ import ShowList from "../ShowList";
 const AppointDonor = () => {
   const [appointments, setAppointments] = useState([]);
   const [fieldNames, setFieldNames] = useState([]);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const getAllAppointments = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:8080/api/v1/appointment/doAppointDonor"
-        );
+        console.log("API URL:", apiUrl);
+        const response = await fetch(`${apiUrl}/appointment/doAppointDonor`);
         const responseData = await response.json();
 
         if (response.ok) {
@@ -25,7 +25,7 @@ const AppointDonor = () => {
     };
 
     getAllAppointments();
-  }, []);
+  },[]);
 
   return <ShowList fieldNames={fieldNames} data={appointments} />;
 };

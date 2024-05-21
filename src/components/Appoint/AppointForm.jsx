@@ -8,6 +8,7 @@ const AppointForm = () => {
   const [responseMessage, setResponseMessage] = useState("");
   const [showModal, setShowModal] = useState(false); //Showing the Conform
   const [formData, setFormData] = useState(null);
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   /* A compoent show when the submit ask for submit or not based on the confrom calliing the function */
   const handleSubmit = (event) => {
@@ -23,7 +24,7 @@ const AppointForm = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/api/v1/appointment/createAppointment?donorId=${donorId}`,
+        `${apiUrl}/appointment/createAppointment?donorId=${donorId}`,
         {
           method: "POST",
           body: formData,
@@ -51,7 +52,7 @@ const AppointForm = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center min-h-screen">
       <h1 className="text-center text-3xl font-bold mt-8">
         Appointment Creation
       </h1>
