@@ -38,13 +38,13 @@ const Navbar = () => {
 
       {/* Toggle Night Mode */}
       <DarkMode />
-      {/* Signup and Login */}
+      {/* Signup and Login For Authorities */}
       <div className="bg-white p-2 rounded-full mr-2 hover:bg-red-800 group hover:transition-all duration-700 ease-out hover:scale-105">
         <Link
-          to="/Signup"
+          to="/Staff"
           className="text-red-500 text-sm font-bold group-hover:text-white uppercase "
         >
-          SignUp
+          Staff
         </Link>
       </div>
 
