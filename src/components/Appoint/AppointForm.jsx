@@ -1,34 +1,53 @@
 import React, { useState } from "react";
+import ConfirmationModal from "./ConfirmationModal";
 
 const AppointForm = () => {
   const [donorId] = useState(
     new URLSearchParams(window.location.search).get("donorId")
   );
   const [responseMessage, setResponseMessage] = useState("");
+  const [showModal, setShowModal] = useState(false); //Showing the Conform
+  const [formData, setFormData] = useState(null);
 
-  const handleSubmit = async (event) => {
+  /* A compoent show when the submit ask for submit or not based on the confrom calliing the function */
+  const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
-    const formData = new FormData(form);
+    const newFormData = new FormData(form);
+    setFormData(newFormData);
+    setShowModal(true);
+  };
+
+  const handleConfirm = async () => {
+    setShowModal(false);
 
     try {
       const response = await fetch(
         `http://localhost:8080/api/v1/appointment/createAppointment?donorId=${donorId}`,
         {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
+          body: formData,
         }
       );
 
-      const data = await response.json();
-      setResponseMessage(data.message);
+      // Check if the response is JSON or not
+      const contentType = response.headers.get("content-type");
+
+      let data;
+      if (contentType && contentType.indexOf("application/json") !== -1) {
+        data = await response.json();
+      } else {
+        data = await response.text(); // For non-JSON responses
+      }
+      setResponseMessage(data.message || data);
     } catch (error) {
-      console.error("Error:", error.message);
+      console.error("Error:", error);
       setResponseMessage(error.toString());
     }
+  };
+
+  const handleCancel = () => {
+    setShowModal(false);
   };
 
   return (
@@ -43,11 +62,13 @@ const AppointForm = () => {
             className="form-control block w-full p-3 mb-4 text-xl border border-gray-300 rounded-md"
             type="date"
             name="appointmentDate"
+            required
           />
           <input
             className="form-control block w-full p-3 mb-4 text-xl border border-gray-300 rounded-md"
             type="time"
             name="appointmentTime"
+            required
           />
           <div className="flex space-x-4">
             <button
@@ -68,6 +89,11 @@ const AppointForm = () => {
       {responseMessage && (
         <h2 className="text-center text-xl mt-5">{responseMessage}</h2>
       )}
+      <ConfirmationModal
+        show={showModal}
+        onConfirm={handleConfirm}
+        onCancel={handleCancel}
+      />
     </div>
   );
 };
