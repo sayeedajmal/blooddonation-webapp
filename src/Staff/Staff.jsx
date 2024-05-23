@@ -1,38 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { images } from "../constants";
 import SignupForm from "./Auth/SignupForm";
+import { useAuth } from "./AuthProvider";
 
 const Staff = () => {
+  const navigate = useNavigate();
+  const { login, token } = useAuth();
+
   const [isLogin, setIsLogin] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
-  const apiUrl = process.env.REACT_APP_API_URL;
+
+  useEffect(() => {
+    if (token) {
+      navigate("/dashboard");
+    }
+  }, [token, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${apiUrl}/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem("token", data.accessToken);
-        console.log("Login successful, token:", data.accessToken);
-        navigate("/dashboard");
-      } else {
-        console.log(response);
-        setError("Error: " + response);
-      }
+      await login(email, password);
     } catch (error) {
-      setError("Error: " + error);
+      setError("Error: " + error.message);
     }
   };
 

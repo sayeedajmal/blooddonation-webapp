@@ -3,7 +3,6 @@ import React from "react";
 const Dashboard = () => {
   return (
     <div className="flex h-screen">
-      {/* Sidebar */}
       <div className="w-64 bg-gray-800 text-white flex flex-col">
         <div className="h-16 flex items-center justify-center bg-gray-900">
           <h1 className="text-xl font-bold">Blood Donor Staff</h1>
