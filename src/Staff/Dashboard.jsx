@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Dashboard = () => {
   return (
@@ -9,25 +9,24 @@ const Dashboard = () => {
           <h1 className="text-xl font-bold">Blood Donor Staff</h1>
         </div>
         <nav className="flex-1 px-2 py-4 space-y-2">
-          <a href="#" className="block px-4 py-2 rounded hover:bg-gray-700">
+          <a href="##" className="block px-4 py-2 rounded hover:bg-gray-700">
             Dashboard
           </a>
-          <a href="#" className="block px-4 py-2 rounded hover:bg-gray-700">
+          <a href="###" className="block px-4 py-2 rounded hover:bg-gray-700">
             Donors
           </a>
-          <a href="#" className="block px-4 py-2 rounded hover:bg-gray-700">
+          <a href="##" className="block px-4 py-2 rounded hover:bg-gray-700">
             Appointments
           </a>
-          <a href="#" className="block px-4 py-2 rounded hover:bg-gray-700">
+          <a href="##" className="block px-4 py-2 rounded hover:bg-gray-700">
             Reports
           </a>
-          <a href="#" className="block px-4 py-2 rounded hover:bg-gray-700">
+          <a href="##" className="block px-4 py-2 rounded hover:bg-gray-700">
             Settings
           </a>
         </nav>
       </div>
-      
-      {/* Main content */}
+
       <div className="flex-1 bg-gray-100 p-6">
         <header className="flex items-center justify-between">
           <h1 className="text-2xl font-semibold">Dashboard</h1>
@@ -35,9 +34,8 @@ const Dashboard = () => {
             Log Out
           </button>
         </header>
-        
+
         <main className="mt-6">
-          {/* Replace the content below with actual dashboard content */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-6 bg-white rounded-lg shadow-md">
               <h2 className="text-lg font-medium">Total Donors</h2>
@@ -51,7 +49,6 @@ const Dashboard = () => {
               <h2 className="text-lg font-medium">Blood Units Collected</h2>
               <p className="mt-2 text-3xl font-bold">40</p>
             </div>
-            {/* Add more cards or content here */}
           </div>
         </main>
       </div>

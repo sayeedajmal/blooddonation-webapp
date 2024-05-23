@@ -1,4 +1,6 @@
+import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignupForm = ({ setIsLogin }) => {
   const [formData, setFormData] = useState({
@@ -8,6 +10,9 @@ const SignupForm = ({ setIsLogin }) => {
     address: "",
     password: "",
   });
+  const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,12 +22,16 @@ const SignupForm = ({ setIsLogin }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform form submission logic here, e.g., make an API call to create a new staff member
-    console.log(formData); 
-    // Set isLogin to true after signup
-    setIsLogin(true);
+    try {
+      const response = await axios.post(`${apiUrl}/signup`, formData);
+      localStorage.setItem("token", response.data.access_token); //Storing Data to LocalStorage
+      setMessage(response.data.message);
+      navigate("/dashboard");
+    } catch (error) {
+      setMessage(error.response ? error.response.data : error.message);
+    }
   };
 
   return (
@@ -113,6 +122,7 @@ const SignupForm = ({ setIsLogin }) => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
+        {message && <p className="text-red-500 text-sm italic">{message}</p>}
         <button
           type="submit"
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

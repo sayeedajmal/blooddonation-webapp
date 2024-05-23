@@ -1,9 +1,40 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { images } from "../constants";
 import SignupForm from "./Auth/SignupForm";
 
 const Staff = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`${apiUrl}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        localStorage.setItem("token", data.accessToken);
+        console.log("Login successful, token:", data.accessToken);
+        navigate("/dashboard");
+      } else {
+        console.log(response);
+        setError("Error: " + response);
+      }
+    } catch (error) {
+      setError("Error: " + error);
+    }
+  };
 
   return (
     <div
@@ -14,11 +45,10 @@ const Staff = () => {
     >
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
         <h2 className="text-2xl font-bold mb-6 text-center">
-          {/* Change the heading text based on isLogin */}
           {isLogin ? "Login" : "Sign Up"}
         </h2>
         {isLogin ? (
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
@@ -29,6 +59,8 @@ const Staff = () => {
               <input
                 type="email"
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 required
               />
@@ -43,10 +75,13 @@ const Staff = () => {
               <input
                 type="password"
                 id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                 required
               />
             </div>
+            {error && <p className="text-red-500 text-xs italic">{error}</p>}
             <div className="flex items-center justify-between">
               <button
                 type="submit"
