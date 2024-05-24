@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { images } from "../constants";
-import SignupForm from "./Auth/SignupForm";
-import { useAuth } from "./AuthProvider";
+import SignupForm from "./Auth/Auth/SignupForm";
+import { useAuth } from "./Auth/Auth/AuthProvider";
 
 const Staff = () => {
   const navigate = useNavigate();

@@ -1,10 +1,10 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import { AuthProvider } from "./Staff/AuthProvider";
+import { AuthProvider } from "./Staff/Auth/Auth/AuthProvider";
 import Dashboard from "./Staff/Dashboard";
 import Staff from "./Staff/Staff";
-import { Donor, MedicalHistory, Navbar } from "./components";
-import AppointForm from "./components/Appoint/AppointForm";
+import { Donor, MedicalHistory, AppointForm } from "./Staff/components";
+import { Navbar } from "./components";
 import { About, Footer, Header, Service } from "./containers";
 
 const App = () => {

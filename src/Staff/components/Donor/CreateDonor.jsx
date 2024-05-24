@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { images } from "../../constants";
+import { images } from "../../../constants";
 
 const CreateDonor = () => {
   const [formData, setFormData] = useState({

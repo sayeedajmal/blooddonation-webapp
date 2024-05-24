@@ -1,4 +1,4 @@
-/* import axios from "axios";
+import axios from "axios";
 
 axios.interceptors.request.use(
   (config) => {
@@ -19,9 +19,11 @@ axios.interceptors.response.use(
   },
   (error) => {
     if (error.response && error.response.status === 401) {
-      
+      localStorage.removeItem("token");
+      window.location.href = "/login";
     }
     return Promise.reject(error);
   }
 );
- */
+
+export default axios;
