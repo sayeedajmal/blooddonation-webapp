@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "./axiosConfig";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -26,7 +26,7 @@ const SignupForm = ({ setIsLogin }) => {
     e.preventDefault();
     try {
       const response = await axios.post(`${apiUrl}/signup`, formData);
-      localStorage.setItem("token", response.data.access_token); //Storing Data to LocalStorage
+      localStorage.setItem("token", response.data.access_token);
       setMessage(response.data.message);
       navigate("/dashboard");
     } catch (error) {

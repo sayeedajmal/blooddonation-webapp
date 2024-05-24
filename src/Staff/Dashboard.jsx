@@ -1,55 +1,78 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "./Auth/Auth/AuthProvider";
+import Summery from "./components/StaffPos/Summery";
+import Donor from "./components/StaffPos/Donor";
 
 const Dashboard = () => {
+  const { token, user, fetchUserDetails, logout } = useAuth();
+  const navigate = useNavigate();
+  const [activeComponent, setActiveComponent] = useState("Dashboard");
+
+  const StaffPos = [
+    "Dashboard",
+    "Donors",
+    "Appointments",
+    "Medical History",
+    "Donations",
+    "BloodBank",
+    "Staffs",
+    "Settings",
+  ];
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/staff");
+    } else if (!user) {
+      fetchUserDetails();
+    }
+  }, [token, user, fetchUserDetails, navigate]);
+
+  if (!token) {
+    return navigate("/staff");
+  }
+
+  const handleButtonClick = (component) => {
+    setActiveComponent(component);
+  };
+
   return (
     <div className="flex h-screen">
       <div className="w-64 bg-gray-800 text-white flex flex-col">
-        <div c lassName="h-16 flex items-center justify-center bg-gray-900">
-          <h1 className="text-xl font-bold">Blood Donor Staff</h1>
+        <div className="h-16 flex items-center justify-center bg-gray-900">
+          <h1 className="text-xl font-bold">{user?.position || ""}</h1>
         </div>
         <nav className="flex-1 px-2 py-4 space-y-2">
-          <a href="##" className="block px-4 py-2 rounded hover:bg-gray-700">
-            Dashboard
-          </a>
-          <a href="###" className="block px-4 py-2 rounded hover:bg-gray-700">
-            Donors
-          </a>
-          <a href="##" className="block px-4 py-2 rounded hover:bg-gray-700">
-            Appointments
-          </a>
-          <a href="##" className="block px-4 py-2 rounded hover:bg-gray-700">
-            Reports
-          </a>
-          <a href="##" className="block px-4 py-2 rounded hover:bg-gray-700">
-            Settings
-          </a>
+          {StaffPos.map((item, index) => (
+            <li
+              key={index}
+              onClick={() => handleButtonClick(item)}
+              className="block px-4 py-2 bg-slate-500 rounded hover:bg-gray-700 cursor-pointer"
+            >
+              {item}
+            </li>
+          ))}
         </nav>
       </div>
 
       <div className="flex-1 bg-gray-100 p-6">
         <header className="flex items-center justify-between">
-          <h1 className="text-2xl font-semibold">Dashboard</h1>
-          <button className="px-4 py-2 bg-red-500 text-white rounded">
+          <h1 className="text-2xl font-bold uppercase">{activeComponent}</h1>
+          <button
+            onClick={logout}
+            className="px-4 py-2 bg-red-500 text-white rounded"
+          >
             Log Out
           </button>
         </header>
 
-        <main className="mt-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="p-6 bg-white rounded-lg shadow-md">
-              <h2 className="text-lg font-medium">Total Donors</h2>
-              <p className="mt-2 text-3xl font-bold">150</p>
-            </div>
-            <div className="p-6 bg-white rounded-lg shadow-md">
-              <h2 className="text-lg font-medium">Appointments Today</h2>
-              <p className="mt-2 text-3xl font-bold">25</p>
-            </div>
-            <div className="p-6 bg-white rounded-lg shadow-md">
-              <h2 className="text-lg font-medium">Blood Units Collected</h2>
-              <p className="mt-2 text-3xl font-bold">40</p>
-            </div>
-          </div>
-        </main>
+        {/* Conditionally render components based on user existence */}
+        {user && (
+          <>
+            {activeComponent === "Dashboard" && <Summery user={user} />}
+            {activeComponent === "Donors" && <Donor />}
+          </>
+        )}
       </div>
     </div>
   );
