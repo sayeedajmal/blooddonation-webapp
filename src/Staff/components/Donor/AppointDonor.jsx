@@ -1,31 +1,33 @@
 import React, { useEffect, useState } from "react";
+import axios from "../../Auth/Auth/axiosConfig";
 import ShowList from "../ShowList";
 
 const AppointDonor = () => {
   const [appointments, setAppointments] = useState([]);
   const [fieldNames, setFieldNames] = useState([]);
-  const apiUrl = process.env.REACT_APP_API_URL;
+  const ApiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
-    const getAllAppointments = async () => {
+    const getAllStaff = async () => {
       try {
-        console.log("API URL:", apiUrl);
-        const response = await fetch(`${apiUrl}/appointment/doAppointDonor`);
-        const responseData = await response.json();
-
-        if (response.ok) {
-          setFieldNames(Object.keys(responseData[0]));
-          setAppointments(responseData);
+        const response = await axios.get(`${ApiUrl}/donor/showDonor`, {
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        if (response.status === 200) {
+          setFieldNames(Object.keys(response.data[0]));
+          setAppointments(response.data);
         } else {
-          console.error("Failed to fetch appointments");
+          console.log("Failed to fetch staff");
         }
       } catch (error) {
-        console.error("An error occurred:", error);
+        console.error("Error: ", error);
       }
     };
-
-    getAllAppointments();
-  },[]);
+    getAllStaff();
+  }, [ApiUrl]);
 
   return <ShowList fieldNames={fieldNames} data={appointments} />;
 };

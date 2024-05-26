@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import axios from "../../Auth/Auth/axiosConfig";
 import ConfirmationModal from "./ConfirmationModal";
-
 const AppointForm = () => {
   const [donorId] = useState(
     new URLSearchParams(window.location.search).get("donorId")
@@ -23,10 +23,14 @@ const AppointForm = () => {
     setShowModal(false);
 
     try {
-      const response = await fetch(
+      const response = await axios.get(
         `${apiUrl}/appointment/createAppointment?donorId=${donorId}`,
         {
           method: "POST",
+          withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
           body: formData,
         }
       );

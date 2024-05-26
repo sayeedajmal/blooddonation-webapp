@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "../../Auth/Auth/axiosConfig";
 import ShowList from "../ShowList";
 
 const DonorId = () => {
@@ -11,24 +12,23 @@ const DonorId = () => {
     const getDonorById = async () => {
       if (donorId !== null && donorId !== "") {
         try {
-          const response = await fetch(`${apiUrl}/donor/${donorId}`);
-          const responseData = await response.json();
+          const response = await axios.get(`${apiUrl}/donor/${donorId}`, {
+            withCredentials: true,
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          });
 
-          if (response.ok) {
-            setFieldNames(Object.keys(responseData));
-            setDonorData([responseData]);
-          } else {
-            setFieldNames(Object.keys(responseData));
-            setDonorData([responseData]);
+          if (response.status === 200) {
+            setFieldNames(Object.keys(response.data));
+            setDonorData([response.data]);
           }
-        } catch (error) {
-          console.error("An error occurred:", error);
-        }
+        } catch (error) {}
       }
     };
 
     getDonorById();
-  }, []);
+  }, [donorId, apiUrl]);
 
   return (
     <>
