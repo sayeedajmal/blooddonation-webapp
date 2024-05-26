@@ -4,7 +4,7 @@ import { images } from "../constants";
 import SignupForm from "./Auth/Auth/SignupForm";
 import { useAuth } from "./Auth/Auth/AuthProvider";
 
-const Staff = () => {
+const LoginStaff = () => {
   const navigate = useNavigate();
   const { login, token } = useAuth();
 
@@ -98,4 +98,4 @@ const Staff = () => {
   );
 };
 
-export default Staff;
+export default LoginStaff;

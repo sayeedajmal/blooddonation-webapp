@@ -29,7 +29,7 @@ const StaffPosition = () => {
 
   return (
     <div className="bg-white bg-opacity-80 rounded-lg p-6 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6 text-center">Staff Details</h1>
+      <h1 className="text-3xl font-bold mb-6 text-center">LoginStaff Details</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-6">
         {staff.map((member) => (
           <div

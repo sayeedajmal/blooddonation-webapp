@@ -53,7 +53,7 @@ const Dashboard = () => {
                 <li
                   key={index}
                   onClick={() => handleButtonClick(item)}
-                  className={`block px-4 py-2 rounded hover:bg-gray-700 cursor-pointer ${
+                  className={`block px-4 py-2 m-1 rounded hover:bg-white hover:text-black cursor-pointer ${
                     activeComponent === item ? "bg-slate-500" : "bg-slate-700"
                   }`}
                 >
