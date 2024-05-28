@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./Auth/Auth/AuthProvider";
-import { Donor, Summery, StaffPosition } from "./components";
+import { Donor, Summery, StaffPosition, StaffSettings } from "./components";
 
 const Dashboard = () => {
   const { token, user, fetchUserDetails, logout } = useAuth();
@@ -22,14 +22,14 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (!token) {
-      navigate("/staff");
+      navigate("/Dashboard");
     } else if (!user) {
       fetchUserDetails();
     }
   }, [token, user, fetchUserDetails, navigate]);
 
   if (!token) {
-    return navigate("/staff");
+    return navigate("/LoginStaff");
   }
 
   const handleButtonClick = (component) => {
@@ -89,6 +89,7 @@ const Dashboard = () => {
             {activeComponent === "Dashboard" && <Summery user={user} />}
             {activeComponent === "Donors" && <Donor />}
             {activeComponent === "Staffs" && <StaffPosition />}
+            {activeComponent === "Settings" && <StaffSettings />}
           </>
         )}
       </div>

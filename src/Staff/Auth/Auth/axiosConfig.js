@@ -22,6 +22,7 @@ axios.interceptors.response.use(
       /*   localStorage.removeItem("token");
       window.location.href = "/login"; */
       alert("YOU DONT HAVE ACCESS TO THIS");
+      console.log(error);
     }
     return Promise.reject(error);
   }

@@ -1,9 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import images from "../../../constants/images";
+import Modal from "../Model";
+import StaffPositionForm from "./StaffPositionForm";
 
 const StaffPosition = () => {
   const [staff, setStaff] = useState([]);
+  const [selectedStaff, setSelectedStaff] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const ApiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
@@ -27,14 +31,25 @@ const StaffPosition = () => {
     getAllStaff();
   }, [ApiUrl]);
 
+  const openModal = (staffMember) => {
+    setSelectedStaff(staffMember);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedStaff(null);
+  };
+
   return (
     <div className="bg-white bg-opacity-80 rounded-lg p-6 max-w-4xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6 text-center">LoginStaff Details</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-6">
+      <h1 className="text-3xl font-bold mb-6 text-center">Staff Details</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 ">
         {staff.map((member) => (
           <div
             key={member.staffId}
             className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            onClick={() => openModal(member)}
           >
             <img
               src={images.manHeart}
@@ -48,7 +63,7 @@ const StaffPosition = () => {
               <strong>Position:</strong> {member.position}
             </p>
             <p className="text-gray-600">
-              <strong>Contact:</strong> {member.contact_number}
+              <strong>Contact:</strong> {member.contactNumber}
             </p>
             <p className="text-gray-600">
               <strong>Email:</strong> {member.email}
@@ -57,14 +72,20 @@ const StaffPosition = () => {
               <strong>Enabled:</strong> {member.enabled ? "Yes" : "No"}
             </p>
             <p className="text-gray-600">
-              <strong>Created At:</strong> {member.created_at}
+              <strong>Created At:</strong> {member.createdAt}
             </p>
             <p className="text-gray-600">
-              <strong>Updated At:</strong> {member.updated_at || "N/A"}
+              <strong>Updated At:</strong> {member.updatedAt || "N/A"}
             </p>
           </div>
         ))}
       </div>
+
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        {selectedStaff && (
+          <StaffPositionForm staffMember={selectedStaff} onClose={closeModal} />
+        )}
+      </Modal>
     </div>
   );
 };

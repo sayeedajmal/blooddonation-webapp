@@ -44,7 +44,7 @@ const Navbar = () => {
           to="/LoginStaff"
           className="text-red-500 text-sm font-bold group-hover:text-white uppercase "
         >
-          LoginStaff
+          Staff Login
         </Link>
       </div>
 
