@@ -18,12 +18,8 @@ axios.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response && error.response.status === 401) {
-      /*   localStorage.removeItem("token");
-      window.location.href = "/login"; */
-      alert("YOU DONT HAVE ACCESS TO THIS");
-      console.log(error);
-    }
+    alert("ERROR FROM AXIOS: " + error);
+    console.log("EROR FROM AXIOSCONFIG: " + error);
     return Promise.reject(error);
   }
 );

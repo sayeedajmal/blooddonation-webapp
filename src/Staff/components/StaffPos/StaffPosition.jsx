@@ -42,9 +42,9 @@ const StaffPosition = () => {
   };
 
   return (
-    <div className="bg-white bg-opacity-80 rounded-lg p-6 max-w-4xl mx-auto">
+    <div className="bg-white bg-opacity-80 rounded-lg p-6 max-w-4xl h-screen mx-auto mt-4">
       <h1 className="text-3xl font-bold mb-6 text-center">Staff Details</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-4 ">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 gap-2 h-4/6 overflow-auto p-3 custom-scrollbar">
         {staff.map((member) => (
           <div
             key={member.staffId}

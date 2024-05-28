@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./Auth/Auth/AuthProvider";
-import { Donor, Summery, StaffPosition, StaffSettings } from "./components";
+import {
+  Donor,
+  Appoint,
+  StaffPosition,
+  StaffSettings,
+  Summery,
+} from "./components";
 
 const Dashboard = () => {
   const { token, user, fetchUserDetails, logout } = useAuth();
@@ -90,6 +96,7 @@ const Dashboard = () => {
             {activeComponent === "Donors" && <Donor />}
             {activeComponent === "Staffs" && <StaffPosition />}
             {activeComponent === "Settings" && <StaffSettings />}
+            {activeComponent === "Appointments" && <Appoint />}
           </>
         )}
       </div>

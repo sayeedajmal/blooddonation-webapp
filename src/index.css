@@ -10,8 +10,8 @@
   margin: 0;
   scroll-behavior: smooth;
 }
-:root {
 
+:root {
   --font-base: "DM Sans", sans-serif;
   --primary-color: #ff0000; /* Deep Red */
   --secondary-color: #b30000; /* Bright Red */
@@ -21,4 +21,30 @@
   --accent-color: #ffd700; /* Rich Gold */
   --highlight-color: #ffa500; /* Warm Orange */
   --white-color: #ffffff;
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--background-color);
+  color: var(--dark-gray);
+}
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--light-gray);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--dark-gray);
+    border-radius: 10px;
+    border: 2px solid var(--light-gray);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: var(--secondary-color);
+  }
 }

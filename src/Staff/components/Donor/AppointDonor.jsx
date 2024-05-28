@@ -10,7 +10,7 @@ const AppointDonor = () => {
   useEffect(() => {
     const getAllStaff = async () => {
       try {
-        const response = await axios.get(`${ApiUrl}/donor/showDonor`, {
+        const response = await axios.get(`${ApiUrl}/donor/doAppointDonor`, {
           withCredentials: true,
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

@@ -2,15 +2,16 @@ import React, { useState } from "react";
 import axios from "../../Auth/Auth/axiosConfig";
 import ConfirmationModal from "./ConfirmationModal";
 const AppointForm = () => {
-  const [donorId] = useState(
-    new URLSearchParams(window.location.search).get("donorId")
+  const donorId = parseInt(
+    new URLSearchParams(window.location.search).get("donorId"),
+    10
   );
+
   const [responseMessage, setResponseMessage] = useState("");
-  const [showModal, setShowModal] = useState(false); //Showing the Conform
+  const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState(null);
   const apiUrl = process.env.REACT_APP_API_URL;
 
-  /* A compoent show when the submit ask for submit or not based on the confrom calliing the function */
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -23,31 +24,25 @@ const AppointForm = () => {
     setShowModal(false);
 
     try {
-      const response = await axios.get(
+      const response = await axios.post(
         `${apiUrl}/appointment/createAppointment?donorId=${donorId}`,
+        formData,
         {
-          method: "POST",
           withCredentials: true,
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "multipart/form-data",
           },
-          body: formData,
         }
       );
-
-      // Check if the response is JSON or not
-      const contentType = response.headers.get("content-type");
-
-      let data;
-      if (contentType && contentType.indexOf("application/json") !== -1) {
-        data = await response.json();
-      } else {
-        data = await response.text(); // For non-JSON responses
+      if (response.status === 201) {
+        alert(response.data);
+        window.history.back();
       }
-      setResponseMessage(data.message || data);
+      setResponseMessage(response.data);
     } catch (error) {
       console.error("Error:", error);
-      setResponseMessage(error.toString());
+      setResponseMessage(error.response.data.message);
     }
   };
 

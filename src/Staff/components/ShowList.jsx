@@ -9,8 +9,8 @@ const ShowList = ({ fieldNames, data }) => {
   };
 
   return (
-    <div className="container mx-auto m-4 bg-gray-800 text-white p-4 rounded-lg">
-      <table className="table-auto min-w-min">
+    <div className="container mx-auto m-4 bg-gray-800 text-white p-4 rounded-lg overflow-auto custom-scrollbar">
+      <table className="table-auto overflow-scroll">
         <thead id="Header">
           <tr>
             {fieldNames.map((fieldName, index) => (
