@@ -1,9 +1,11 @@
-#home {
+#homeId {
   position: relative;
   background: url("../../assets/headBg.svg");
   background-size: cover;
   background-repeat: repeat;
-  background-position: center;
+  inset: 5%;
+  width: 90%;
+  background-position: right;
 
   .app__wrapper {
     padding: 0;

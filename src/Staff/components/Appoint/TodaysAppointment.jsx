@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "../../Auth/Auth/axiosConfig";
 
 const MessageComponent = ({ message }) => {
@@ -14,6 +15,7 @@ const TodaysAppointment = () => {
   const [fieldNames, setFieldNames] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const ApiUrl = process.env.REACT_APP_API_URL;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getTodaysAppointments = async () => {
@@ -45,6 +47,10 @@ const TodaysAppointment = () => {
     getTodaysAppointments();
   }, [ApiUrl]);
 
+  const handleRowClick = (appointId) => {
+    navigate(`/CreateDonation?appointId=${appointId}`);
+  };
+
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center">
       <div className="w-full max-w-4xl p-6 bg-white shadow-md rounded-lg">
@@ -73,11 +79,7 @@ const TodaysAppointment = () => {
                   <tr
                     key={index}
                     className="hover:bg-gray-100 cursor-pointer"
-                    onClick={() =>
-                      window.open(
-                        `CreateDonation.html?appointId=${appointment.appointmentId}`
-                      )
-                    }
+                    onClick={() => handleRowClick(appointment.appointmentId)}
                   >
                     {fieldNames.map((fieldName) => (
                       <td

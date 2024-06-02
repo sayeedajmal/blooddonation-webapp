@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./Auth/Auth/AuthProvider";
 import {
-  Donor,
   Appoint,
+  CreateDonation,
   StaffPosition,
   StaffSettings,
   Summery,
@@ -93,10 +93,10 @@ const Dashboard = () => {
         {user && (
           <>
             {activeComponent === "Dashboard" && <Summery user={user} />}
-            {activeComponent === "Donors" && <Donor />}
+            {activeComponent === "Appointments" && <Appoint />}
+            {activeComponent === "Donations" && <CreateDonation />}
             {activeComponent === "Staffs" && <StaffPosition />}
             {activeComponent === "Settings" && <StaffSettings />}
-            {activeComponent === "Appointments" && <Appoint />}
           </>
         )}
       </div>

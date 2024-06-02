@@ -3,16 +3,22 @@ import "./Navbar.scss";
 
 import { motion } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
-import DarkMode from "./DarkMode";
-
 import { Link } from "react-router-dom";
+import DarkMode from "./DarkMode";
 
 import { images } from "../../constants";
 
 const Navbar = () => {
   /* Setting The Toggle For Mobile View */
   const [Toggle, setToggle] = useState(false);
-
+  const NavLinks = [
+    "HOME",
+    "SERVICE",
+    "CAMPAIGN",
+    "DONATE",
+    "REQUEST BLOOD",
+    "CONTACT",
+  ];
   return (
     <div className="app__navbar">
       <div className="app__navbar-logo">
@@ -21,14 +27,7 @@ const Navbar = () => {
 
       {/* Links */}
       <ul className="app__navbar-links">
-        {[
-          "HOME",
-          "SERVICE",
-          "CAMPAIGN",
-          "DONATE",
-          "REQUEST BLOOD",
-          "CONTACT",
-        ].map((item) => (
+        {NavLinks.map((item) => (
           <li className="app__flex p-text" key={`link-${item}`}>
             <div />
             <a href={`#${item}`}>{item}</a>
@@ -60,14 +59,7 @@ const Navbar = () => {
             <HiX onClick={() => setToggle(false)} />
 
             <ul>
-              {[
-                "HOME",
-                "SERVICE",
-                "CAMPAIGN",
-                "DONATE",
-                "REQUEST BLOOD",
-                "CONTACT",
-              ].map((item) => (
+              {NavLinks.map((item) => (
                 <li key={item}>
                   <a href={`#${item}`} onClick={() => setToggle(false)}>
                     {item}

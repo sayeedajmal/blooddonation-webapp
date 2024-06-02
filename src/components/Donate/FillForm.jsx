@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { images } from "../../../constants";
-
-const CreateDonor = () => {
+import { images } from "../../constants";
+import { AppWrap } from "../../wrapper";
+const FillForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -261,4 +261,4 @@ const CreateDonor = () => {
   );
 };
 
-export default CreateDonor;
+export default AppWrap(FillForm, "fillForm");

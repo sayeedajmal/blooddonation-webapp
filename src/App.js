@@ -3,8 +3,8 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import { AuthProvider } from "./Staff/Auth/Auth/AuthProvider";
 import Dashboard from "./Staff/Dashboard";
 import LoginStaff from "./Staff/LoginStaff";
-import { Donor, MedicalHistory, AppointForm } from "./Staff/components";
-import { Navbar } from "./components";
+import { AppointForm, Donor, MedicalHistory } from "./Staff/components";
+import { FillForm, Navbar } from "./components";
 import { About, Footer, Header, Service } from "./containers";
 
 const App = () => {
@@ -32,6 +32,7 @@ const HomePage = () => {
       <Navbar />
       <Header />
       <Service />
+      <FillForm />
       <About />
       <Footer />
     </div>
