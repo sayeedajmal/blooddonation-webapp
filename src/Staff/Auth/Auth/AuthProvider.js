@@ -22,22 +22,19 @@ export const AuthProvider = ({ children }) => {
   /* FOR LOGIN */
   const login = async (email, password) => {
     try {
-      const response = await fetch(`${apiUrl}/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
+      const response = await axios.post(`${apiUrl}/login`, {
+        email,
+        password,
       });
-      if (response.ok) {
-        const data = await response.json();
+      if (response.status === 200) {
+        const data = response.data;
         const accessToken = data.access_token;
         localStorage.setItem("token", accessToken);
         setToken(accessToken);
 
         navigate("/dashboard");
       } else {
-        const errorText = await response.text(); // capture error message
+        const errorText = response.statusText;
         console.error(`Login failed: ${response.status} - ${errorText}`);
         throw new Error(`Login failed: ${response.status}`);
       }
@@ -69,11 +66,21 @@ export const AuthProvider = ({ children }) => {
   }, [token, fetchUserDetails, user]);
 
   /* LOGOUT */
-  const logout = () => {
-    localStorage.removeItem("token");
-    setToken(null);
-    setUser(null);
-    navigate("/LoginStaff");
+  const logout = async () => {
+    try {
+      if (!token) throw new Error("No User Signed");
+      await axios.post(`${apiUrl}/logout`, null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      localStorage.removeItem("token");
+      setToken(null);
+      setUser(null);
+      navigate("/LoginStaff");
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
   };
 
   return (

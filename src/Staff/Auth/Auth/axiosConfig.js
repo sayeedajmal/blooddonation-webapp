@@ -18,8 +18,6 @@ axios.interceptors.response.use(
     return response;
   },
   (error) => {
-    alert("ERROR FROM AXIOS: " + error);
-    console.log("EROR FROM AXIOSCONFIG: " + error);
     return Promise.reject(error);
   }
 );

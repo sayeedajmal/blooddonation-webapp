@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import ShowAppoint from "../Appoint/ShowAppoint";
+import TodayAppointments from "../Appoint/TodaysAppointment";
 
 const Appoint = () => {
-  const donorHandler = ["ShowAppoints", "DeleteAppoint"];
+  const donorHandler = ["TodayAppointment", "DeleteAppoint"];
   const [activeComponent, setActiveComponent] = useState(null);
 
   const handleButtonClick = (component) => {
@@ -27,7 +27,7 @@ const Appoint = () => {
       </div>
 
       {/* Conditionally render components based on the button clicked */}
-      {activeComponent === "ShowAppoints" && <ShowAppoint />}
+      {activeComponent === "TodayAppointment" && <TodayAppointments />}
     </>
   );
 };

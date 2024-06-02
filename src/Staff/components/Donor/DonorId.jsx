@@ -2,9 +2,18 @@ import React, { useEffect, useState } from "react";
 import axios from "../../Auth/Auth/axiosConfig";
 import ShowList from "../ShowList";
 
+const MessageComponent = ({ message }) => {
+  return (
+    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 text-center  rounded-md mb-4">
+      {message}
+    </div>
+  );
+};
+
 const DonorId = () => {
   const [donorId, setDonorId] = useState(null);
   const [fieldNames, setFieldNames] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [donorData, setDonorData] = useState([]);
   const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -23,7 +32,13 @@ const DonorId = () => {
             setFieldNames(Object.keys(response.data));
             setDonorData([response.data]);
           }
-        } catch (error) {}
+        } catch (error) {
+          if (error.response && error.response.status === 409) {
+            setErrorMessage(error.response.data.message);
+          } else {
+            setErrorMessage("An error occurred: " + error);
+          }
+        }
       }
     };
 
@@ -41,8 +56,11 @@ const DonorId = () => {
           onChange={(e) => setDonorId(e.target.value)}
         />
       </div>
-
-      <ShowList fieldNames={fieldNames} data={donorData} />
+      {errorMessage ? (
+        <MessageComponent message={errorMessage} />
+      ) : (
+        <ShowList fieldNames={fieldNames} data={donorData} />
+      )}
     </>
   );
 };
