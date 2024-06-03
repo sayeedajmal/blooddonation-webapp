@@ -15,20 +15,19 @@ const Home = () => {
         transition={{ type: "spring", stiffness: 100 }}
         className="flex flex-[0.65] flex-col justify-start"
       >
-        <p className="mt-8 w-72 text-left text-red-600 font-bold text-6xl">
+        <p className="m-20 w-72 text-left text-red-600 font-bold text-6xl">
           Help And Save Life By Donating Blood
         </p>
         <motion.div
-          className="animate-pulse mt-8 w-32 h-32"
-          whileHover={{ scale: 1.5, rotate: -90 }}
+          className="animate-pulse ml-20 w-32 h-32 "
+          whileHover={{ scale: 1.4 }}
           whileTap={{
             scale: 0.5,
-            rotate: -180,
             borderRadius: "100%",
           }}
           transition={{ duration: 0.5 }}
         >
-          <img src={images.logo} alt="Logo" className="w-32 h-32 rotate-90" />
+          <img src={images.logo} alt="Logo" className="w-32 h-32" />
         </motion.div>
       </motion.div>
     </div>

@@ -1,0 +1,16 @@
+#Campaign {
+  position: relative;
+  background: url("../../assets/ladywithHeart.svg");
+  background-size: cover;
+  background-position: center left;
+  background-repeat: no-repeat !important;
+  background-size: 50%;
+
+  .app__wrapper {
+    padding: 0;
+
+    .copyright {
+      display: none;
+    }
+  }
+}
