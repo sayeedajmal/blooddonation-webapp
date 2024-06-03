@@ -11,7 +11,7 @@ const ShowList = ({ fieldNames, data }) => {
   return (
     <div className="container mx-auto m-4 bg-gray-800 text-white p-4 rounded-lg overflow-auto custom-scrollbar">
       <table className="table-auto overflow-scroll">
-        <thead id="Header">
+        <thead id="Home">
           <tr>
             {fieldNames.map((fieldName, index) => (
               <th key={index} className="px-4 py-2 border-b border-gray-700">

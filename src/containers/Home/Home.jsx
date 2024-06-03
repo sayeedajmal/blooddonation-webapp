@@ -2,15 +2,16 @@ import { motion } from "framer-motion";
 import React from "react";
 import { images } from "../../constants";
 import { AppWrap } from "../../wrapper";
+import "./Home.scss";
 
-import "./Header.scss";
-
-const Header = () => {
+const Home = () => {
   return (
-    <div className="flex w-full h-screen flex-row p-4 bg-header-bg bg-cover bg-center">
+    <div
+      id="Home"
+      className="flex w-full h-screen flex-row p-4 bg-header-bg bg-cover bg-center"
+    >
       <motion.div
         whileInView={{ x: [-200, 0], opacity: [0, 1] }}
-        tranimate={{ x: 100 }}
         transition={{ type: "spring", stiffness: 100 }}
         className="flex flex-[0.65] flex-col justify-start"
       >
@@ -34,4 +35,4 @@ const Header = () => {
   );
 };
 
-export default AppWrap(Header, "homeId");
+export default AppWrap(Home, "homeId");

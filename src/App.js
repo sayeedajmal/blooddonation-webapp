@@ -4,8 +4,8 @@ import { AuthProvider } from "./Staff/Auth/Auth/AuthProvider";
 import Dashboard from "./Staff/Dashboard";
 import LoginStaff from "./Staff/LoginStaff";
 import { AppointForm, Donor, MedicalHistory } from "./Staff/components";
-import { FillForm, Navbar } from "./components";
-import { About, Footer, Header, Service } from "./containers";
+import { Donate, Navbar } from "./components";
+import { About, Footer, Home, Service } from "./containers";
 
 const App = () => {
   return (
@@ -30,9 +30,9 @@ const HomePage = () => {
   return (
     <div>
       <Navbar />
-      <Header />
+      <Home />
       <Service />
-      <FillForm />
+      <Donate />
       <About />
       <Footer />
     </div>

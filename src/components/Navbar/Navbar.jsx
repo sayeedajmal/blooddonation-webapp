@@ -5,22 +5,21 @@ import { motion } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import DarkMode from "./DarkMode";
-
 import { images } from "../../constants";
 
 const Navbar = () => {
   /* Setting The Toggle For Mobile View */
   const [Toggle, setToggle] = useState(false);
   const NavLinks = [
-    "HOME",
-    "SERVICE",
-    "CAMPAIGN",
-    "DONATE",
-    "REQUEST BLOOD",
-    "CONTACT",
+    "Home",
+    "Service",
+    "Campaign",
+    "Donate",
+    "RequestBlood",
+    "Contact",
   ];
   return (
-    <div className="app__navbar">
+    <nav className="app__navbar">
       <div className="app__navbar-logo">
         <img src={images.logo} alt="logo" />
       </div>
@@ -30,7 +29,7 @@ const Navbar = () => {
         {NavLinks.map((item) => (
           <li className="app__flex p-text" key={`link-${item}`}>
             <div />
-            <a href={`#${item}`}>{item}</a>
+            <a href={`#${item}`}>{item.toUpperCase()}</a>
           </li>
         ))}
       </ul>
@@ -43,7 +42,7 @@ const Navbar = () => {
           to="/LoginStaff"
           className="text-red-500 text-sm font-bold group-hover:text-white uppercase "
         >
-          Staff Login
+          Staff
         </Link>
       </div>
 
@@ -57,20 +56,17 @@ const Navbar = () => {
             transition={{ duration: 0.4, ease: "easeIn" }}
           >
             <HiX onClick={() => setToggle(false)} />
-
             <ul>
               {NavLinks.map((item) => (
                 <li key={item}>
-                  <a href={`#${item}`} onClick={() => setToggle(false)}>
-                    {item}
-                  </a>
+                  <a href={`#${item}`}>{item.toUpperCase()}</a>
                 </li>
               ))}
             </ul>
           </motion.div>
         )}
       </div>
-    </div>
+    </nav>
   );
 };
 
