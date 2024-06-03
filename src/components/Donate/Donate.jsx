@@ -116,8 +116,8 @@ const Donate = () => {
             {" "}
           </h1>
           <motion.form
-            whileInView={{ y: [-200, 0] }}
-            transition={{ type: "spring", stiffness: 100 }}
+            whileInView={{ x: [500, 0], scale: [0, 1] }}
+            transition={{ type: "spring", stiffness: 90 }}
             id="Donate"
             onSubmit={handleSubmit}
             className="flex items-center justify-center"
