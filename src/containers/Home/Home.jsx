@@ -34,4 +34,4 @@ const Home = () => {
   );
 };
 
-export default AppWrap(Home, "homeId");
+export default AppWrap(Home, "home");

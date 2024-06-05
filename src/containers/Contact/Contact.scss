@@ -1,10 +1,11 @@
-#Donate {
+#Contact {
   position: relative;
-  background-color: rgba(236, 245, 248, 0.884);
-  background-image: url("../../assets/sharing.svg");
+  background-color: rgba(2, 37, 51, 0.678);
+  background-image: url("../../assets/bloodDrop.png");
   background-size: cover;
   background-position: center left;
   background-repeat: no-repeat;
+  transition: 0.2s ease-in;
   background-size: 30%;
 
   .app__wrapper {

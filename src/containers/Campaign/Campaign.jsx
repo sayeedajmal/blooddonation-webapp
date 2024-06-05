@@ -4,7 +4,7 @@ import { AppWrap } from "../../wrapper";
 import "./Campaign.scss";
 
 const Campaign = () => {
-  const CampaignDate = "August 30th, 2021 | 10.00 AM";
+  const CampaignDate = "June 30th, 2024 | 10.00 AM";
 
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -53,8 +53,8 @@ const Campaign = () => {
 
       <motion.button
         variants={textVariants}
-        transition={{ duration: 0.5, delay: 0.9 }}
-        className="p-3 rounded-full bg-red-400 w-3/5 text-white font-bold text-3xl m-auto hover:scale-105"
+        whileHover={{ scale: 1.1 }}
+        className=" p-3 rounded-full bg-red-400 w-3/5 text-white font-bold text-3xl m-auto hover:scale-105"
       >
         Book Now
       </motion.button>
