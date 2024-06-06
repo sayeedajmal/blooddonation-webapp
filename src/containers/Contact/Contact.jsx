@@ -1,5 +1,5 @@
-import React from "react";
 import { motion } from "framer-motion";
+import React from "react";
 import { BiGlobe } from "react-icons/bi";
 import { FaLocationPin } from "react-icons/fa6";
 import { MdEmail, MdPhoneAndroid } from "react-icons/md";
@@ -10,13 +10,13 @@ import "./Contact.scss";
 const Contact = () => {
   return (
     <motion.div
-      className="w-3/6 flex items-center justify-center rounded-3xl shadow-md shadow-white"
+      className="w-3/6 flex items-center justify-center rounded-3xl shadow-md"
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: false }}
     >
-      <div className="bg-white rounded-lg shadow-lg p-8 w-full">
+      <div className="rounded-lg shadow-lg p-8 w-full">
         <div className="flex flex-col md:flex-row">
           <motion.div
             initial={{ x: -100, opacity: 0 }}
@@ -27,37 +27,29 @@ const Contact = () => {
             <h2 className="text-lg font-bold uppercase mb-4">Connect US</h2>
             <form>
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Name
-                </label>
+                <label className="block text-sm font-medium ">Name</label>
                 <input
                   type="text"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 text-black block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Email
-                </label>
+                <label className="block text-sm font-medium ">Email</label>
                 <input
                   type="email"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 text-black block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Subject
-                </label>
+                <label className="block text-sm font-medium ">Subject</label>
                 <input
                   type="text"
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="mt-1 text-black block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
               <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700">
-                  Message
-                </label>
-                <textarea className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
+                <label className="block text-sm font-medium ">Message</label>
+                <textarea className="mt-1 text-black block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"></textarea>
               </div>
               <motion.button
                 type="submit"
@@ -89,7 +81,9 @@ const Contact = () => {
             viewport={{ once: false }}
           >
             <FaLocationPin />
-            <p className="m-5">Show On Map</p>
+            <p className="m-5" target="blank">
+              Show On Map
+            </p>
           </motion.div>
           <motion.div
             className="flex flex-col items-center justify-center w-2/3"
@@ -100,7 +94,7 @@ const Contact = () => {
             viewport={{ once: false }}
           >
             <MdPhoneAndroid />
-            <a href="mailto:sayeedajmala06@gmail.com" className="m-5">
+            <a href="tel:+919964716450" className="m-5" target="blank">
               Contact Phone
             </a>
           </motion.div>
@@ -113,7 +107,11 @@ const Contact = () => {
             viewport={{ once: false }}
           >
             <MdEmail />
-            <a href="mailto:sayeedajmala06@gmail.com" className="m-5">
+            <a
+              href="mailto:sayeedajmala06@gmail.com"
+              className="m-5"
+              target="blank"
+            >
               Send Email
             </a>
           </motion.div>
@@ -126,7 +124,11 @@ const Contact = () => {
             viewport={{ once: false }}
           >
             <BiGlobe />
-            <a href="https://sayeedthedev.web.app" className="m-5">
+            <a
+              href="https://sayeedthedev.web.app"
+              className="m-5"
+              target="blank"
+            >
               Visit Portfolio
             </a>
           </motion.div>

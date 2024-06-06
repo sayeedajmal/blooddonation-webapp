@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div
       id="Home"
-      className="flex w-full h-screen flex-row p-4 bg-header-bg bg-cover bg-center"
+      className="flex w-full h-screen flex-row bg-header-bg bg-cover bg-center"
     >
       <motion.div
         whileInView={{ x: [-200, 0], opacity: [0, 1] }}
@@ -27,7 +27,7 @@ const Home = () => {
           }}
           transition={{ duration: 0.5 }}
         >
-          <img src={images.logo} alt="Logo" className="w-32 h-32" />
+          <img src={images.bloodPressure} alt="Logo" className="scale-150" />
         </motion.div>
       </motion.div>
     </div>

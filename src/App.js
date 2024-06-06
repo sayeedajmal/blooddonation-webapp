@@ -5,22 +5,26 @@ import Dashboard from "./Staff/Dashboard";
 import LoginStaff from "./Staff/LoginStaff";
 import { AppointForm, Donor, MedicalHistory } from "./Staff/components";
 import { Navbar } from "./components";
-import { Contact, Donate, Footer, Home, Service, Campaign } from "./containers";
+import { Campaign, Contact, Donate, Footer, Home } from "./containers";
+import { ThemeProvider } from "./components/ThemeContext";
+import "./index.css";
 
 const App = () => {
   return (
     <Router>
       <AuthProvider>
-        <div className="app">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/LoginStaff" element={<LoginStaff />} />
-            <Route path="/AppointForm" element={<AppointForm />} />
-            <Route path="/Donor" element={<Donor />} />
-            <Route path="/MedicalHistory" element={<MedicalHistory />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-          </Routes>
-        </div>
+        <ThemeProvider>
+          <div className="app">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/LoginStaff" element={<LoginStaff />} />
+              <Route path="/AppointForm" element={<AppointForm />} />
+              <Route path="/Donor" element={<Donor />} />
+              <Route path="/MedicalHistory" element={<MedicalHistory />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+            </Routes>
+          </div>
+        </ThemeProvider>
       </AuthProvider>
     </Router>
   );

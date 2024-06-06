@@ -23,7 +23,7 @@ const ThankYouMessage = ({ onReset }) => (
     <p className="m-2 text-center font-bold uppercase text-green-500">
       Thank you for registering to donate blood!
     </p>
-    <p className="m-2 text-center max-w-prose text-slate-200">
+    <p className="m-2 text-center max-w-prose ">
       You can wait until you receive an email for your appointment.
     </p>
     <button
@@ -110,10 +110,7 @@ const Donate = () => {
     <div>
       {!submitted ? (
         <>
-          <h1
-            className="text-black text-lg text-center m-4 font-bold"
-            id="response"
-          >
+          <h1 className=" text-lg text-center m-4 font-bold" id="response">
             {" "}
           </h1>
           <motion.form
@@ -141,14 +138,14 @@ const Donate = () => {
             <div className="p-8 grid grid-cols-2 gap-4 mt-4 ">
               <div className="mt-4">
                 <label
-                  className="block text-slate-200 text-sm font-bold mb-2"
+                  className="block  text-sm font-bold mb-2"
                   htmlFor="firstName"
                 >
                   First Name
                 </label>
                 <input
                   onChange={handleChange}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-color leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                   id="firstName"
                   type="text"
                   placeholder="First Name"
@@ -159,14 +156,14 @@ const Donate = () => {
 
               <div className="mt-4">
                 <label
-                  className="block text-slate-200 text-sm font-bold mb-2"
+                  className="block  text-sm font-bold mb-2"
                   htmlFor="lastName"
                 >
                   Last Name
                 </label>
                 <input
                   onChange={handleChange}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-color leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                   id="lastName"
                   type="text"
                   placeholder="Last Name"
@@ -176,15 +173,12 @@ const Donate = () => {
               </div>
 
               <div className="mt-4">
-                <label
-                  className="block text-slate-200 text-sm font-bold mb-2"
-                  htmlFor="dob"
-                >
+                <label className="block  text-sm font-bold mb-2" htmlFor="dob">
                   Birth Date
                 </label>
                 <input
                   onChange={handleChange}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-color leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                   id="dob"
                   type="date"
                   placeholder="DOB"
@@ -195,14 +189,14 @@ const Donate = () => {
 
               <div className="mt-4">
                 <label
-                  className="block text-slate-200 text-sm font-bold mb-2"
+                  className="block  text-sm font-bold mb-2"
                   htmlFor="bloodType"
                 >
                   Blood Group
                 </label>
                 <select
                   onChange={handleChange}
-                  className="shadow appearance-none border rounded-full w-full py-2 px-3  text-gray-color leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded-full w-full py-2 px-3  text-black leading-tight focus:outline-none focus:shadow-outline"
                   id="bloodType"
                   name="bloodType"
                   required
@@ -221,14 +215,14 @@ const Donate = () => {
 
               <div className="mt-4">
                 <label
-                  className="block text-slate-200 text-sm font-bold mb-2"
+                  className="block  text-sm font-bold mb-2"
                   htmlFor="contactNumber"
                 >
                   Contact Number
                 </label>
                 <input
                   onChange={handleChange}
-                  className="shadow appearance-none border rounded w-full py-2 px-3  text-gray-color leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3  text-black leading-tight focus:outline-none focus:shadow-outline"
                   id="contactNumber"
                   type="tel"
                   placeholder="Contact Number"
@@ -238,15 +232,12 @@ const Donate = () => {
               </div>
 
               <div className="mt-4">
-                <label
-                  className="block text-slate-200 text-sm font-bold mb-2"
-                  htmlFor="city"
-                >
+                <label className="block  text-sm font-bold mb-2" htmlFor="city">
                   City
                 </label>
                 <input
                   onChange={handleChange}
-                  className="shadow appearance-none border rounded w-full py-2 px-3  text-gray-color leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3  text-black leading-tight focus:outline-none focus:shadow-outline"
                   id="city"
                   type="text"
                   placeholder="City"
@@ -257,14 +248,14 @@ const Donate = () => {
 
               <div className="mt-4">
                 <label
-                  className="block text-slate-200 text-sm font-bold mb-2"
+                  className="block  text-sm font-bold mb-2"
                   htmlFor="lastDonationDate"
                 >
                   Last Donation Date
                 </label>
                 <input
                   onChange={handleChange}
-                  className="shadow appearance-none border rounded w-full py-2 px-3  text-gray-color leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3  text-black leading-tight focus:outline-none focus:shadow-outline"
                   id="lastDonationDate"
                   type="date"
                   placeholder="Last Donation Date"
@@ -275,14 +266,14 @@ const Donate = () => {
 
               <div className="mt-4">
                 <label
-                  className="block text-slate-200 text-sm font-bold mb-2"
+                  className="block  text-sm font-bold mb-2"
                   htmlFor="email"
                 >
                   Email
                 </label>
                 <input
                   onChange={handleChange}
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-color leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-black leading-tight focus:outline-none focus:shadow-outline"
                   id="email"
                   type="email"
                   placeholder="Email"

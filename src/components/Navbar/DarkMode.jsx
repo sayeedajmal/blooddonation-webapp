@@ -1,36 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
+import { useTheme } from "../ThemeContext";
 
-const DarkMode = () => {
-  const [isChecked, setIsChecked] = useState(false);
-
-  const handleCheckboxChange = () => {
-    setIsChecked(!isChecked);
-  };
+const Navbar = () => {
+  const { isDarkMode, toggleTheme } = useTheme();
 
   return (
-    <>
-      <label className="themeSwitcherTwo relative flex  cursor-pointer select-none items-end ">
+    <nav className="flex justify-between items-center p-4">
+      <label className="themeSwitcherTwo relative flex cursor-pointer select-none items-end">
         <input
           type="checkbox"
-          checked={isChecked}
-          onChange={handleCheckboxChange}
+          checked={isDarkMode}
+          onChange={toggleTheme}
           className="sr-only"
         />
-
         <span
           className={`slider mx-4 flex h-8 w-[60px] items-center rounded-full p-1 duration-200 ${
-            isChecked ? "bg-[#212b36]" : "bg-[#CCCCCE]"
+            isDarkMode ? "bg-[#212b36]" : "bg-[#e6eff8]"
           }`}
         >
           <span
-            className={`dot h-6 w-6 rounded-full bg-white duration-200 ${
-              isChecked ? "translate-x-[28px]" : ""
+            className={`dot h-6 w-6 rounded-full bg-slate-300 duration-200 ${
+              isDarkMode ? "translate-x-[28px]" : ""
             }`}
           ></span>
         </span>
       </label>
-    </>
+    </nav>
   );
 };
 
-export default DarkMode;
+export default Navbar;
