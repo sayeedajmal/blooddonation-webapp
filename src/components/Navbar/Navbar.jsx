@@ -25,7 +25,7 @@ const Navbar = () => {
       </div>
 
       {/* Links */}
-      <ul className="app__navbar-links">
+      <ul className="app__navbar-links font-black">
         {NavLinks.map((item) => (
           <li className="app__flex p-text" key={`link-${item}`}>
             <a href={`#${item}`}>{item.toUpperCase()}</a>

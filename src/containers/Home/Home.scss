@@ -1,10 +1,11 @@
-#home {
+#Home {
   position: relative;
   background-image: url("../../assets/headBg.svg");
   background-size: cover;
   background-position: right;
   background-repeat: no-repeat;
-  background-size: 70%;
+  background-size: 100vmin;
+  scroll-behavior: smooth;
 
   .app__wrapper {
     padding: 0;

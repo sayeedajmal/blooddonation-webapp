@@ -5,7 +5,8 @@
   background-size: cover;
   background-position: center left;
   background-repeat: no-repeat;
-  background-size: 30%;
+  background-size: 100vmin;
+  scroll-behavior: smooth;
 
   .app__wrapper {
     padding: 0;

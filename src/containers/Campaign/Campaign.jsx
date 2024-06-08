@@ -30,21 +30,21 @@ const Campaign = () => {
       variants={containerVariants}
     >
       <motion.h2
-        className="text-6xl text-gray-900 uppercase "
+        className="text-3xl md:text-6xl font-bold text-gray-900 uppercase "
         variants={textVariants}
         transition={{ duration: 0.5 }}
       >
         Donate
       </motion.h2>
       <motion.h1
-        className="text-8xl text-red-600 uppercase font-bold"
+        className="text-3xl md:text-8xl text-red-600 uppercase font-bold"
         variants={textVariants}
         transition={{ duration: 0.5, delay: 0.3 }}
       >
         Your Blood
       </motion.h1>
       <motion.h3
-        className="text-5xl text-gray-800 uppercase m-3"
+        className="text-3xl md:text-5xl text-gray-800 uppercase m-3"
         variants={textVariants}
         transition={{ duration: 0.5, delay: 0.6 }}
       >

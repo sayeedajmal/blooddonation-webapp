@@ -10,25 +10,25 @@ const ThankYouMessage = ({ onReset }) => (
     transition={{ type: "spring", stiffness: 100 }}
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
-    className="flex flex-col items-center text-center p-8"
+    className="flex flex-col items-center text-center p-8 "
   >
     <img
-      className="h-12 w-12 object-cover md:w-48 md:h-48 mb-4"
-      src={images.logo}
+      className="w-2/6 object-cover md:w-48 md:h-48 mb-4"
+      src={images.handWhiteHeart}
       alt="Success"
     />
-    <h2 className="uppercase tracking-wide text-xl text-primary-color font-bold mt-4">
+    <h2 className="uppercase tracking-wide text-xl text-primary-color bg-slate-100 p-2 opacity-70 font-bold mt-4">
       Registration Successful
     </h2>
-    <p className="m-2 text-center font-bold uppercase text-green-500">
+    <p className="m-2 text-center font-bold uppercase text-green-500 bg-slate-100 p-2 opacity-70">
       Thank you for registering to donate blood!
     </p>
-    <p className="m-2 text-center max-w-prose ">
+    <p className="m-2 text-center max-w-prose bg-slate-100 p-2 opacity-70">
       You can wait until you receive an email for your appointment.
     </p>
     <button
       onClick={onReset}
-      className="bg-red-500 p-2 rounded-lg text-lg text-white font-bold mt-4"
+      className="bg-red-500 p-2 rounded-lg text-lg text-white  font-bold mt-4"
     >
       New Form
     </button>
@@ -117,10 +117,10 @@ const Donate = () => {
             whileInView={{ x: [200, 0] }}
             transition={{ type: "spring", stiffness: 50 }}
             onSubmit={handleSubmit}
-            className="md:flex items-center shadow-md shadow-secondary-color rounded-lg bg-red-500 opacity-90"
+            className="w-[90%] m-auto h-[75vh] text-sm  md:flex items-center shadow-md shadow-secondary-color rounded-lg bg-red-500 opacity-90"
           >
             {/* Image and Register Text */}
-            <div className="flex flex-col items-center md:flex-shrink-0">
+            <div className="hidden md:flex flex-col items-center md:flex-shrink-0">
               <img
                 className="h-12 w-12 object-cover md:w-48 md:h-48"
                 src={images.manHeart}
@@ -135,7 +135,7 @@ const Donate = () => {
             </div>
 
             {/* inputs */}
-            <div className="p-8 grid grid-cols-2 gap-4 mt-4 ">
+            <div className="p-2 md:p-8 grid grid-cols-2 gap-4 md:mt-4 ">
               <div className="mt-4">
                 <label
                   className="block  text-sm font-bold mb-2"
@@ -285,7 +285,7 @@ const Donate = () => {
               <div className="mt-2 col-span-2 text-center flex flex-col">
                 <button
                   type="submit"
-                  className="bg-white text-red-600 font-bold py-2 px-4 rounded-lg shadow-md focus:outline-none"
+                  className="bg-slate-100 p-2 opacity-70 text-red-600 font-bold py-2 px-4 rounded-lg shadow-md focus:outline-none"
                 >
                   Submit
                 </button>

@@ -3,9 +3,11 @@
   background-color: rgba(4, 102, 97, 0.541);
   background-image: url("../../assets/ladywithHeart.svg");
   background-size: cover;
-  background-position: center left;
+  background-position: bottom left;
   background-repeat: no-repeat;
-  background-size: 30%;
+  background-size: 50vmin;
+  border-radius: 5px;
+  scroll-behavior: smooth;
 
   .app__wrapper {
     padding: 0;
