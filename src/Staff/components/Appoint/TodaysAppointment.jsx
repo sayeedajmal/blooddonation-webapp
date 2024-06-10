@@ -52,7 +52,7 @@ const TodaysAppointment = () => {
   };
 
   return (
-    <div className="bg-gray-100 flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center">
       <div className="w-full max-w-4xl p-6 bg-white shadow-md rounded-lg">
         <h1 className="text-4xl font-bold text-center text-gray-800 p-4">
           Today's Appointments

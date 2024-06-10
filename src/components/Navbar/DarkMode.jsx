@@ -7,7 +7,7 @@ const Navbar = () => {
 
   return (
     <DarkModeSwitch
-      className="w-10 m-2"
+      className="w-10 h-10 mr-3"
       checked={isDarkMode}
       onChange={toggleTheme}
       size={120}

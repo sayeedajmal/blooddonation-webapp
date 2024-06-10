@@ -16,7 +16,7 @@ const StaffSettings = () => {
   };
 
   return (
-    <div className="bg-white bg-opacity-80 rounded-lg p-6 max-w-4xl mx-auto mt-4">
+    <div className=" bg-opacity-80 rounded-lg p-6 max-w-4xl mx-auto mt-4">
       <h1 className="text-3xl font-bold mb-6 text-center">Your Settings</h1>
       <div className="grid grid-cols-1 gap-6">
         <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">

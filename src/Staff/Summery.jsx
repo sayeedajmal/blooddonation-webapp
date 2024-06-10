@@ -10,15 +10,15 @@ const Summery = ({ user }) => {
               Welcome, {user.staffName}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-              <div className="p-6 bg-white rounded-lg shadow-md">
+              <div className="p-6  rounded-lg shadow-md">
                 <h2 className="text-lg font-medium">Total Donors</h2>
                 <p className="mt-2 text-3xl font-bold">150</p>
               </div>
-              <div className="p-6 bg-white rounded-lg shadow-md">
+              <div className="p-6  rounded-lg shadow-md">
                 <h2 className="text-lg font-medium">Appointments Today</h2>
                 <p className="mt-2 text-3xl font-bold">25</p>
               </div>
-              <div className="p-6 bg-white rounded-lg shadow-md">
+              <div className="p-6  rounded-lg shadow-md">
                 <h2 className="text-lg font-medium">Blood Units Collected</h2>
                 <p className="mt-2 text-3xl font-bold">40</p>
               </div>

@@ -16,9 +16,22 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [user, setUser] = useState(null);
+  const [isConnected, setIsServerConnected] = useState(false);
   const navigate = useNavigate();
   const apiUrl = process.env.REACT_APP_API_URL;
 
+  useEffect(() => {
+    const checkServerHealth = async () => {
+      try {
+        const response = await axios.get(`${apiUrl}/actuator/health`);
+        setIsServerConnected(response.status === 200);
+      } catch (error) {
+        setIsServerConnected(false);
+      }
+    };
+
+    checkServerHealth();
+  }, [apiUrl]);
   /* FOR LOGIN */
   const login = async (email, password) => {
     try {
@@ -85,7 +98,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ token, user, login, logout, fetchUserDetails }}
+      value={{ token, user, login, logout, fetchUserDetails, isConnected }}
     >
       {children}
     </AuthContext.Provider>

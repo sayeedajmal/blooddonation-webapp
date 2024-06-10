@@ -10,7 +10,7 @@ import {
 } from "./components";
 
 const Dashboard = () => {
-  const { token, user, fetchUserDetails, logout } = useAuth();
+  const { token, user, fetchUserDetails, logout, isConnected } = useAuth();
   const navigate = useNavigate();
   const [activeComponent, setActiveComponent] = useState("Dashboard");
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
@@ -49,9 +49,12 @@ const Dashboard = () => {
   return (
     <div className="flex h-screen w-screen overflow-hidden">
       {isSidebarVisible && (
-        <div className="w-64 bg-gray-800 text-white flex flex-col">
-          <div className="h-16 flex items-center justify-center bg-gray-900">
-            <h1 className="text-xl font-bold">{user?.position || ""}</h1>
+        <div className="w-64 bg-gray-800 flex flex-col">
+          <div className="h-16 flex items-center justify-center bg-slate-300  ">
+            <h1 className="text-l font-bold  uppercase text-red-600">
+              POSTION:{" "}
+              {isConnected ? user?.position || "" : "Server OFFLINE"}
+            </h1>
           </div>
           <nav className="flex-1 px-2 py-4 space-y-2">
             <ul>
@@ -59,7 +62,7 @@ const Dashboard = () => {
                 <li
                   key={index}
                   onClick={() => handleButtonClick(item)}
-                  className={`block px-4 py-2 m-1 rounded hover:bg-white hover:text-black cursor-pointer ${
+                  className={`block px-4 py-2 m-1 rounded hover:bg-white text-white hover:text-black cursor-pointer ${
                     activeComponent === item ? "bg-slate-500" : "bg-slate-700"
                   }`}
                 >
@@ -71,7 +74,7 @@ const Dashboard = () => {
         </div>
       )}
 
-      <div className="flex-1 bg-gray-100 p-6 relative">
+      <div className="flex-1  p-6 relative">
         <header className="flex items-center justify-between">
           <h1 className="text-2xl font-bold uppercase">{activeComponent}</h1>
           <div>

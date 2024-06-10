@@ -41,7 +41,7 @@ const StaffSettingsForm = ({ staffMember, onClose }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center py-2">
+    <div className="text-black flex flex-col items-center justify-center py-2">
       <h1 className="text-3xl font-bold mb-8">Update Staff Settings</h1>
       <form
         className="flex flex-col items-start space-y-4 text-lg w-96"

@@ -40,7 +40,7 @@ const CreateDonation = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-100">
+    <div className="flex flex-col items-center justify-center ">
       <h1 className="text-3xl font-bold mb-5">Donation Form</h1>
       <h2 className="text-xl mb-5" id="appointId">
         Appointment Id: {appointId}
@@ -63,7 +63,7 @@ const CreateDonation = () => {
             value={donationStatus}
             onChange={(e) => setDonationStatus(e.target.value)}
             required
-            className="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+            className="block appearance-none w-full text-black bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
           >
             <option value="COMPLETED">COMPLETED</option>
             <option value="CANCELED">CANCELED</option>
