@@ -142,7 +142,7 @@ const Contact = () => {
           </motion.div>
         </div>
       )}
-      <div className="mt-5 flex flex-row text-sm md:text-s overflow-hidden text-center">
+      <div className="mt-5 flex flex-row text-sm md:text-s  text-center">
         <motion.div
           className="flex flex-col items-center justify-center w-2/3"
           whileHover={{ scale: 1.1 }}

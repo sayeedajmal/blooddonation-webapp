@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <div className="flex  h-screen flex-row bg-header-bg bg-cover bg-center">
       <motion.div
-        whileInView={{ x: [-200, 0], opacity: [0, 1] }}
+        whileInView={{ x: [-70, 0], opacity: [0, 1] }}
         transition={{ type: "spring", stiffness: 100 }}
         className="flex  flex-col justify-start"
       >

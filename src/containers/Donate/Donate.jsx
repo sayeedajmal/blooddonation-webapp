@@ -114,10 +114,10 @@ const Donate = () => {
             {" "}
           </h1>
           <motion.form
-            whileInView={{ x: [200, 0] }}
+            whileInView={{ scale: [0, 1] }}
             transition={{ type: "spring", stiffness: 50 }}
             onSubmit={handleSubmit}
-            className="w-[90%] m-auto h-[75vh] text-sm  md:flex items-center shadow-md shadow-secondary-color rounded-lg bg-red-500 opacity-90"
+            className="w-[90%] m-auto p-2 text-sm  md:flex items-center shadow-lg hover:shadow-secondary-color rounded-lg bg-red-700"
           >
             {/* Image and Register Text */}
             <div className="hidden md:flex flex-col items-center md:flex-shrink-0">
@@ -260,7 +260,6 @@ const Donate = () => {
                   type="date"
                   placeholder="Last Donation Date"
                   name="lastDonationDate"
-                  required
                 />
               </div>
 
@@ -285,7 +284,7 @@ const Donate = () => {
               <div className="mt-2 col-span-2 text-center flex flex-col">
                 <button
                   type="submit"
-                  className="bg-slate-100 p-2 opacity-70 text-red-600 font-bold py-2 px-4 rounded-lg shadow-md focus:outline-none"
+                  className="bg-white p-2 text-red-600 font-bold py-2 px-4 rounded-lg shadow-md focus:outline-none"
                 >
                   Submit
                 </button>

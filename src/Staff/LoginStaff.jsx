@@ -35,8 +35,8 @@ const LoginStaff = () => {
         backgroundImage: `url(${images.sharing})`,
       }}
     >
-      <div className=" p-8 rounded-lg shadow-lg max-w-md w-full">
-        <h2 className="text-2xl font-bold mb-6 text-center">
+      <div className=" p-8 rounded-lg shadow-lg text-lg  max-w-md  w-4/5 md:w-full bg-red-400 shadow-white">
+        <h2 className="text-2xl font-bold  text-center">
           {isLogin ? "Login" : "Sign Up"}
         </h2>
         {isLogin ? (
@@ -73,17 +73,21 @@ const LoginStaff = () => {
                 required
               />
             </div>
-            {error && <p className="text-red-500 text-xs italic">{error}</p>}
-            <div className="flex items-center justify-between">
+            {error && (
+              <p className="text-red-500 bg-white text-xs italic w-fit p-1 rounded-full text-center m-auto">
+                {error}
+              </p>
+            )}
+            <div className="flex items-center justify-between flex-col">
               <button
                 type="submit"
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                className="w-full mt-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
                 Login
               </button>
               <a
                 href="##"
-                className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                className="relativefont-bold text-sm m-2 font-bold text-white hover:text-blue-800"
                 onClick={() => setIsLogin(false)}
               >
                 Create an account

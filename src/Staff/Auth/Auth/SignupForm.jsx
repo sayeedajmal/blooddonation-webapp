@@ -122,10 +122,14 @@ const SignupForm = ({ setIsLogin }) => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        {message && <p className="text-red-500 text-sm italic">{message}</p>}
+        {message && (
+          <p className=" m-auto text-red-500 bg-white text-xs italic w-fit p-1 rounded-full text-center">
+            {message}
+          </p>
+        )}
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          className="w-full bg-blue-500 hover:bg-blue-700 m-1 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
           Sign Up
         </button>
