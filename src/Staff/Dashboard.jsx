@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "./Auth/Auth/AuthProvider";
 import {
   Appoint,
-  CreateDonation,
   StaffPosition,
   StaffSettings,
   Summery,
+  TodayAppointments
 } from "./components";
 
 const Dashboard = () => {
@@ -17,7 +17,6 @@ const Dashboard = () => {
 
   const StaffPos = [
     "Dashboard",
-    "Donors",
     "Appointments",
     "Medical History",
     "Donations",
@@ -52,8 +51,7 @@ const Dashboard = () => {
         <div className="w-64 bg-gray-800 flex flex-col">
           <div className="h-16 flex items-center justify-center bg-slate-300  ">
             <h1 className="text-l font-bold  uppercase text-red-600">
-              POSTION:{" "}
-              {isConnected ? user?.position || "" : "Server OFFLINE"}
+              POSTION: {isConnected ? user?.position || "" : "Server OFFLINE"}
             </h1>
           </div>
           <nav className="flex-1 px-2 py-4 space-y-2">
@@ -97,7 +95,7 @@ const Dashboard = () => {
           <>
             {activeComponent === "Dashboard" && <Summery user={user} />}
             {activeComponent === "Appointments" && <Appoint />}
-            {activeComponent === "Donations" && <CreateDonation />}
+            {activeComponent === "Donations" && <TodayAppointments />}
             {activeComponent === "Staffs" && <StaffPosition />}
             {activeComponent === "Settings" && <StaffSettings />}
           </>

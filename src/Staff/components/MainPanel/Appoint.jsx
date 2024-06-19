@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import TodayAppointments from "../Appoint/TodaysAppointment";
+import AppointDonor from "../Donor/AppointDonor";
+import DonorId from "../Donor/DonorId";
 
 const Appoint = () => {
-  const donorHandler = ["TodayAppointment", "DeleteAppoint"];
+  const donorHandler = [
+    "AppointDonor",
+    "TodayAppointment",
+    "DeleteAppoint",
+    "DonorId",
+  ];
   const [activeComponent, setActiveComponent] = useState(null);
 
   const handleButtonClick = (component) => {
@@ -11,7 +18,7 @@ const Appoint = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center text-2xl m-4">
+      <div className="flex justify-start items-start text-2xl m-4">
         <ul className="flex justify-evenly w-5/12">
           {donorHandler.map((item, index) => (
             <li key={index}>
@@ -27,6 +34,8 @@ const Appoint = () => {
       </div>
 
       {/* Conditionally render components based on the button clicked */}
+      {activeComponent === "AppointDonor" && <AppointDonor />}
+      {activeComponent === "DonorId" && <DonorId />}
       {activeComponent === "TodayAppointment" && <TodayAppointments />}
     </>
   );

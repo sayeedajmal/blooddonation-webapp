@@ -43,7 +43,7 @@ const DonorId = () => {
     };
 
     getDonorById();
-  }, [donorId, apiUrl]);
+  }, [donorId,donorData,apiUrl,fieldNames]);
 
   return (
     <>
